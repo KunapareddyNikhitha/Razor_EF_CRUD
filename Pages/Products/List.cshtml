@@ -1,0 +1,39 @@
+﻿@page
+@model Razor_EF_CRUD.Pages.Products.ListModel
+@{
+}
+
+<h1 class="mb-3">List of Products</h1>
+
+@if (Model.products != null && Model.products.Any()){
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product Id </th>
+                <th>Product Name </th>
+                <th>Product Price </th>
+                <th>Product Availability </th>
+                <th>Product Category </th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var product in Model.products)
+            {
+                <tr>
+                    <td> @product.Id</td>
+                    <td> @product.Name</td>
+                    <td> @product.Price</td>
+                    <td> @product.Availability</td>
+                    <td> @product.Category</td>
+                    <td>
+                        <a href="/Products/Edit/@product.Id" class="btn btn-dark"> Edit </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else{
+    <p> No Employees Found</p>
+}
